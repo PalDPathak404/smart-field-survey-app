@@ -1,9 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { ScrollView, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useSurvey } from '@/components/survey-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function HistoryScreen() {
@@ -17,7 +19,7 @@ export default function HistoryScreen() {
   const cardBorder = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)';
 
   return (
-    <View style={styles.container}>
+    <ScreenWrapper>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={[styles.title, { color: text }]}>Survey History</Text>
         {surveys.length === 0 ? (
@@ -79,12 +81,12 @@ export default function HistoryScreen() {
           ))
         )}
       </ScrollView>
-    </View>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent' },
+  container: { flex: 1 },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
   title: { fontSize: 24, fontWeight: '700', marginBottom: 20 },
   emptyCard: { borderRadius: 20, padding: 36, alignItems: 'center', gap: 12, borderWidth: 1, overflow: 'hidden' },

@@ -1,8 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 

@@ -1,4 +1,5 @@
 import { BlurView } from 'expo-blur';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useRef, useState } from 'react';
 import {
@@ -12,6 +13,7 @@ import {
     View,
 } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
@@ -175,7 +177,7 @@ export default function CameraScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent' },
+  container: { flex: 1 },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', padding: 20, gap: 16 },
   statusText: { fontSize: 15, color: '#64748b', textAlign: 'center' },

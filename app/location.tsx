@@ -1,9 +1,11 @@
 import { BlurView } from 'expo-blur';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import * as Clipboard from 'expo-clipboard';
 import * as Location from 'expo-location';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
@@ -51,7 +53,7 @@ export default function LocationScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenWrapper>
       <BlurView intensity={40} tint="default" style={styles.card}>
         <Text style={styles.title}>Location</Text>
         <Text style={styles.subtitle}>
@@ -88,12 +90,12 @@ export default function LocationScreen() {
           <Text style={styles.copyBtnText}>Copy Coordinates</Text>
         </Pressable>
       )}
-    </View>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent', padding: 20, justifyContent: 'center' },
+  container: { flex: 1 },
   card: { backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: 20, padding: 20, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.6)', overflow: 'hidden' },
   title: { fontSize: 22, fontWeight: '700', color: '#0f172a', marginBottom: 8 },
   subtitle: { fontSize: 16, color: '#0f172a', lineHeight: 24, fontFamily: 'monospace' },

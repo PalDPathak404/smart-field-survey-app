@@ -1,8 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { BlurView } from 'expo-blur';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { useSurvey } from '@/components/survey-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function ProfileScreen() {
@@ -68,7 +70,7 @@ export default function ProfileScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent' },
+  container: { flex: 1 },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
   headerCard: { borderRadius: 24, padding: 20, flexDirection: 'row', alignItems: 'center', borderWidth: 1, marginBottom: 16, overflow: 'hidden' },
   avatar: { width: 72, height: 72, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },

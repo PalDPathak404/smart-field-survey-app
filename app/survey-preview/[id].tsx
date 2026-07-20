@@ -1,7 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
@@ -68,7 +70,7 @@ export default function SurveyPreviewScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent' },
+  container: { flex: 1 },
   content: { padding: 20, paddingBottom: 40 },
   headerCard: { backgroundColor: 'transparent', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: '#e2e8f0' },
   title: { fontSize: 22, fontWeight: '700', color: '#0f172a' },

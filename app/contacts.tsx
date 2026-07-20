@@ -1,8 +1,10 @@
 import { BlurView } from 'expo-blur';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import * as Contacts from 'expo-contacts';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
@@ -48,7 +50,7 @@ export default function ContactsScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenWrapper>
       <BlurView intensity={40} tint="default" style={styles.card}>
         <Text style={styles.title}>Field Contacts</Text>
         <Text style={styles.subtitle}>
@@ -74,12 +76,12 @@ export default function ContactsScreen() {
           ))
         )}
       </ScrollView>
-    </View>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent', paddingTop: 100, paddingHorizontal: 20 },
+  container: { flex: 1 },
   card: { backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.6)', overflow: 'hidden' },
   title: { fontSize: 22, fontWeight: '700', color: '#0f172a' },
   subtitle: { marginTop: 8, color: '#1e293b', lineHeight: 20 },

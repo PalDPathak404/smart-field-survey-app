@@ -1,7 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
+import { ScreenWrapper } from '@/components/screen-wrapper';
 import { BlurView } from 'expo-blur';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function SettingsScreen() {
@@ -47,7 +49,7 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'transparent' },
+  container: { flex: 1 },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
   card: { borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, overflow: 'hidden' },
   title: { fontSize: 22, fontWeight: '700' },
