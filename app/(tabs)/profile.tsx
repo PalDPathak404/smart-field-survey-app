@@ -11,10 +11,10 @@ export default function ProfileScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <BlurView intensity={40} tint="light" style={styles.headerCard}>
         <View style={styles.avatar}>
-          <Text style={styles.avatarText}>AK</Text>
+          <Text style={styles.avatarText}>DK</Text>
         </View>
         <View style={styles.headerText}>
-          <Text style={styles.name}>Aisha Khan</Text>
+          <Text style={styles.name}>Dk Kumar</Text>
           <Text style={styles.role}>Field Survey Student</Text>
         </View>
       </BlurView>

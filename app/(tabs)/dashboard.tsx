@@ -57,7 +57,7 @@ export default function DashboardScreen() {
           </View>
           <View style={styles.profileRow}>
             <View>
-              <Text style={styles.profileName}>Aisha Khan</Text>
+              <Text style={styles.profileName}>Dk Kumar</Text>
               <Text style={styles.profileMeta}>Student ID: 20240123</Text>
             </View>
             <View style={styles.profileTag}>

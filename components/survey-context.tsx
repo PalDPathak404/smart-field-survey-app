@@ -1,4 +1,7 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import * as FileSystem from 'expo-file-system';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+
+const SURVEYS_FILE = FileSystem.documentDirectory + 'surveys.json';
 
 export type SurveyPriority = 'low' | 'medium' | 'high';
 
@@ -67,6 +70,38 @@ function formatTime(date = new Date()) {
 
 export function SurveyProvider({ children }: { children: React.ReactNode }) {
   const [surveys, setSurveys] = useState<Survey[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadSurveys = async () => {
+      try {
+        const fileInfo = await FileSystem.getInfoAsync(SURVEYS_FILE);
+        if (fileInfo.exists) {
+          const contents = await FileSystem.readAsStringAsync(SURVEYS_FILE);
+          if (contents) {
+            setSurveys(JSON.parse(contents));
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load surveys:', error);
+      } finally {
+        setIsLoaded(true);
+      }
+    };
+    loadSurveys();
+  }, []);
+
+  useEffect(() => {
+    const saveSurveys = async () => {
+      if (!isLoaded) return;
+      try {
+        await FileSystem.writeAsStringAsync(SURVEYS_FILE, JSON.stringify(surveys));
+      } catch (error) {
+        console.error('Failed to save surveys:', error);
+      }
+    };
+    saveSurveys();
+  }, [surveys, isLoaded]);
   const [surveyTitle, setSurveyTitle] = useState('Field Survey');
   const [status, setStatus] = useState('Ready');
   const [notes, setNotes] = useState('');
