@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface DashboardHeaderProps {
   title: string;
@@ -10,25 +11,27 @@ interface DashboardHeaderProps {
 }
 
 export function DashboardHeader({ title, subtitle, onMenuPress }: DashboardHeaderProps) {
+  const isDark = useColorScheme() === 'dark';
+  const dynamicStyles = getStyles(isDark);
   return (
-    <View style={styles.container}>
+    <View style={dynamicStyles.container}>
       <Pressable onPress={onMenuPress}>
-        <BlurView intensity={40} tint="light" style={styles.menuButton}>
-          <Ionicons name="menu-outline" size={24} color="#0f172a" />
+        <BlurView intensity={40} tint={isDark ? "dark" : "light"} style={dynamicStyles.menuButton}>
+          <Ionicons name="menu-outline" size={24} color={isDark ? "#f8fafc" : "#0f172a"} />
         </BlurView>
       </Pressable>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
+      <View style={dynamicStyles.textContainer}>
+        <Text style={dynamicStyles.title}>{title}</Text>
+        <Text style={dynamicStyles.subtitle}>{subtitle}</Text>
       </View>
-      <BlurView intensity={40} tint="light" style={styles.badge}>
-        <Text style={styles.badgeText}>Live</Text>
+      <BlurView intensity={40} tint={isDark ? "dark" : "light"} style={dynamicStyles.badge}>
+        <Text style={dynamicStyles.badgeText}>Live</Text>
       </BlurView>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const getStyles = (isDark: boolean) => StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,21 +58,21 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#0f172a',
+    color: isDark ? '#f8fafc' : '#0f172a',
   },
   subtitle: {
     fontSize: 13,
-    color: '#64748b',
+    color: isDark ? '#94a3b8' : '#64748b',
     marginTop: 2,
   },
   badge: {
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: '#ecfeff',
+    backgroundColor: isDark ? '#042f2e' : '#ecfeff',
   },
   badgeText: {
-    color: '#0f766e',
+    color: isDark ? '#5eead4' : '#0f766e',
     fontSize: 12,
     fontWeight: '700',
   },
