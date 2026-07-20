@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   panelInner: {
     flex: 1,
     paddingTop: 48,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
   header: {
     flexDirection: 'row',
