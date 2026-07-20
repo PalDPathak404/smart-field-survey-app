@@ -5,7 +5,6 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { DashboardHeader } from '@/components/dashboard-header';
 import { QuickActionCard } from '@/components/quick-action-card';
-import type { SurveyPriority } from '@/components/survey-context';
 import { useSurvey } from '@/components/survey-context';
 
 const actions = [
@@ -14,12 +13,6 @@ const actions = [
   { title: 'Location', subtitle: 'Update current survey location', badge: '03', accent: '#fef3c7' },
   { title: 'Notes', subtitle: 'Edit survey notes in clipboard', badge: '04', accent: '#fce7f3' },
 ];
-
-const priorityColors: Record<SurveyPriority, string> = {
-  low: '#22c55e',
-  medium: '#f59e0b',
-  high: '#ef4444',
-};
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -48,7 +41,7 @@ export default function DashboardScreen() {
           <View style={styles.summaryRowTop}>
             <View style={styles.statBoxTop}>
               <Text style={styles.statNumber}>{surveys.length}</Text>
-              <Text style={styles.statLabel}>Today's Surveys</Text>
+              <Text style={styles.statLabel}>{"Today's Surveys"}</Text>
             </View>
             <View style={styles.statBoxTop}>
               <Text style={styles.statNumber}>{photoCount}</Text>

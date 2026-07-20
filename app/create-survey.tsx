@@ -1,11 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
-import { ScreenWrapper } from '@/components/screen-wrapper';
+import { useRouter } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 type FieldName = 'siteName' | 'clientName' | 'description' | 'priority' | 'date';
@@ -13,6 +11,7 @@ type FieldName = 'siteName' | 'clientName' | 'description' | 'priority' | 'date'
 type FormErrors = Partial<Record<FieldName, string>>;
 
 export default function CreateSurveyScreen() {
+  const router = useRouter();
   const { createSurvey } = useSurvey();
   const [siteName, setSiteName] = useState('');
   const [clientName, setClientName] = useState('');

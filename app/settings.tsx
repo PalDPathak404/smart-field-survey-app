@@ -1,9 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
-import { ScreenWrapper } from '@/components/screen-wrapper';
 import { BlurView } from 'expo-blur';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function SettingsScreen() {

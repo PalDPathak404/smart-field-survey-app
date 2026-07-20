@@ -10,9 +10,20 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 
 function MenuButton() {
   const { setOpen } = useDrawer();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
   return (
-    <Pressable onPress={() => setOpen(true)} style={styles.menuBtn}>
-      <Ionicons name="menu-outline" size={22} color="#ffffff" />
+    <Pressable
+      onPress={() => setOpen(true)}
+      style={[
+        styles.menuBtn,
+        {
+          backgroundColor: isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.05)',
+          borderColor: isDark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.1)',
+        },
+      ]}
+    >
+      <Ionicons name="menu-outline" size={22} color={isDark ? '#ffffff' : '#000000'} />
     </Pressable>
   );
 }

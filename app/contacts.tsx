@@ -1,11 +1,9 @@
 import { BlurView } from 'expo-blur';
-import { ScreenWrapper } from '@/components/screen-wrapper';
+import { ScreenWrapper } from '../components/screen-wrapper';
 import * as Contacts from 'expo-contacts';
 import { useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function ContactsScreen() {
@@ -23,30 +21,18 @@ export default function ContactsScreen() {
     setLoading(true);
     try {
       const { data } = await Contacts.getContactsAsync({
-        fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers, Contacts.Fields.Emails],
+        fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.Emails],
       });
-
-      if (data.length === 0) {
-        Alert.alert('No Contacts', 'No contacts found on this device.');
-      } else {
-        setContacts(data);
-      }
+      setContacts(data);
     } catch {
-      Alert.alert('Error', 'Unable to load contacts right now.');
+      Alert.alert('Error', 'Failed to load contacts.');
     } finally {
       setLoading(false);
     }
   };
 
-  const selectContact = (contact: Contacts.Contact) => {
-    const name = contact.name ?? 'Unknown';
-    const phone = contact.phoneNumbers?.[0]?.number ?? 'No phone';
-    const email = contact.emails?.[0]?.email;
-    const nextContact = email
-      ? `${name} · ${phone} · ${email}`
-      : `${name} · ${phone}`;
-    recordContactSelection(nextContact);
-    Alert.alert('Contact Selected', nextContact);
+  const selectContact = (c: Contacts.Contact) => {
+    recordContactSelection(`${c.name || 'Unknown'} · ${c.phoneNumbers?.[0]?.number || ''}`);
   };
 
   return (
@@ -64,8 +50,8 @@ export default function ContactsScreen() {
             {loading ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.buttonText}>Load Contacts</Text>}
           </Pressable>
         ) : (
-          contacts.map((c) => (
-            <Pressable key={c.id} onPress={() => selectContact(c)} style={{ marginBottom: 12 }}>
+          contacts.map((c, idx) => (
+            <Pressable key={c.id || `${idx}`} onPress={() => selectContact(c)} style={{ marginBottom: 12 }}>
               <BlurView intensity={30} tint="default" style={styles.contactItem}>
                 <Text style={styles.contactName}>{c.name || 'Unknown'}</Text>
                 <Text style={styles.contactDetail}>

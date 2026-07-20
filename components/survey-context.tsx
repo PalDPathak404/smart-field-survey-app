@@ -263,6 +263,7 @@ export function SurveyProvider({ children }: { children: React.ReactNode }) {
     }),
     [
       activeContact,
+      addPhoto,
       clearClipboard,
       clipboardContact,
       clipboardLocation,

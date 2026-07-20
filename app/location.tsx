@@ -1,12 +1,10 @@
 import { BlurView } from 'expo-blur';
-import { ScreenWrapper } from '@/components/screen-wrapper';
+import { ScreenWrapper } from '../components/screen-wrapper';
 import * as Clipboard from 'expo-clipboard';
 import * as Location from 'expo-location';
 import { useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, StyleSheet, Text } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function LocationScreen() {

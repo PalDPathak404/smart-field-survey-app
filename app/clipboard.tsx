@@ -1,11 +1,8 @@
 import { BlurView } from 'expo-blur';
-import { ScreenWrapper } from '@/components/screen-wrapper';
 import * as Clipboard from 'expo-clipboard';
 import { useEffect, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function ClipboardScreen() {
