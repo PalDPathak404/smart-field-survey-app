@@ -3,6 +3,7 @@ import * as Clipboard from 'expo-clipboard';
 import { useEffect, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function ClipboardScreen() {
@@ -48,7 +49,7 @@ export default function ClipboardScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-      <BlurView intensity={40} tint="light" style={styles.card}>
+      <BlurView intensity={40} tint="default" style={styles.card}>
         <Text style={styles.title}>Clipboard Manager</Text>
         <Text style={styles.subtitle}>Copy survey fields, paste notes, and clear clipboard memory.</Text>
 
@@ -119,7 +120,7 @@ export default function ClipboardScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: 'transparent' },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
-  card: { backgroundColor: 'rgba(255,255,255,0.4)', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.6)', overflow: 'hidden' },
+  card: { backgroundColor: 'rgba(255,255,255,0.55)', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.6)', overflow: 'hidden' },
   title: { fontSize: 22, fontWeight: '700', color: '#0f172a' },
   subtitle: { marginTop: 8, color: '#1e293b', lineHeight: 20 },
   summaryRow: { flexDirection: 'row', gap: 12, flexWrap: 'wrap', marginTop: 16 },

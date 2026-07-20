@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function SurveyPreviewScreen() {
@@ -67,17 +68,17 @@ export default function SurveyPreviewScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8fafc' },
+  container: { flex: 1, backgroundColor: 'transparent' },
   content: { padding: 20, paddingBottom: 40 },
-  headerCard: { backgroundColor: '#ffffff', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: '#e2e8f0' },
+  headerCard: { backgroundColor: 'transparent', borderRadius: 20, padding: 18, marginBottom: 16, borderWidth: 1, borderColor: '#e2e8f0' },
   title: { fontSize: 22, fontWeight: '700', color: '#0f172a' },
   subtitle: { marginTop: 8, color: '#64748b', lineHeight: 20 },
-  detailCard: { backgroundColor: '#ffffff', borderRadius: 20, padding: 18, borderWidth: 1, borderColor: '#e2e8f0' },
+  detailCard: { backgroundColor: 'transparent', borderRadius: 20, padding: 18, borderWidth: 1, borderColor: '#e2e8f0' },
   detailLabel: { marginTop: 12, fontSize: 13, fontWeight: '700', color: '#64748b' },
   detailValue: { marginTop: 6, fontSize: 16, color: '#0f172a', lineHeight: 22 },
   backButton: { marginTop: 24, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: '#e2e8f0', paddingVertical: 14, borderRadius: 16 },
   backButtonText: { fontSize: 15, fontWeight: '700', color: '#0f172a' },
-  emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: '#f8fafc' },
+  emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: 'transparent' },
   emptyTitle: { fontSize: 20, fontWeight: '700', color: '#0f172a', marginBottom: 10 },
   emptySubtitle: { textAlign: 'center', color: '#64748b', lineHeight: 20, marginBottom: 16 },
 });

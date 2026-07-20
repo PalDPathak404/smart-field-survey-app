@@ -4,6 +4,7 @@ import * as Location from 'expo-location';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function LocationScreen() {
@@ -51,7 +52,7 @@ export default function LocationScreen() {
 
   return (
     <View style={styles.container}>
-      <BlurView intensity={40} tint="light" style={styles.card}>
+      <BlurView intensity={40} tint="default" style={styles.card}>
         <Text style={styles.title}>Location</Text>
         <Text style={styles.subtitle}>
           {coords

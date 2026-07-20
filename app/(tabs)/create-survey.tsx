@@ -3,6 +3,7 @@ import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 type FieldName = 'siteName' | 'clientName' | 'description' | 'priority' | 'date';
@@ -79,7 +80,7 @@ export default function CreateSurveyScreen() {
         <Text style={styles.heading}>Create Survey</Text>
         <Text style={styles.subheading}>Fill in the details below to create a new field survey.</Text>
 
-        <BlurView intensity={40} tint="light" style={styles.card}>
+        <BlurView intensity={40} tint="default" style={styles.card}>
           <View style={styles.field}>
             <View style={styles.labelRow}>
               <Ionicons name="business-outline" size={16} color="#475569" />

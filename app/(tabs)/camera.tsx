@@ -12,6 +12,7 @@ import {
     View,
 } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function CameraScreen() {
@@ -137,12 +138,12 @@ export default function CameraScreen() {
 
       <View style={styles.controlsRow}>
         <Pressable style={styles.controlBtn} onPress={toggleCameraType}>
-          <BlurView intensity={40} tint="light" style={styles.glassBtn}>
+          <BlurView intensity={40} tint="default" style={styles.glassBtn}>
             <Text style={styles.controlText}>Flip</Text>
           </BlurView>
         </Pressable>
         <Pressable style={styles.controlBtn} onPress={toggleFlashMode}>
-          <BlurView intensity={40} tint="light" style={styles.glassBtn}>
+          <BlurView intensity={40} tint="default" style={styles.glassBtn}>
             <Text style={styles.controlText}>{flashMode === 'off' ? 'Flash Off' : 'Flash On'}</Text>
           </BlurView>
         </Pressable>
@@ -176,7 +177,7 @@ export default function CameraScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: 'transparent' },
   content: { padding: 20, paddingTop: 100, paddingBottom: 40 },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f8fafc', padding: 20, gap: 16 },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', padding: 20, gap: 16 },
   statusText: { fontSize: 15, color: '#64748b', textAlign: 'center' },
   primaryBtn: { backgroundColor: '#2563eb', paddingVertical: 12, paddingHorizontal: 24, borderRadius: 14 },
   primaryBtnText: { color: '#ffffff', fontWeight: '700', fontSize: 15 },
@@ -186,8 +187,8 @@ const styles = StyleSheet.create({
   loadingText: { color: '#ffffff', fontSize: 14, fontWeight: '600' },
   captureBtn: { width: 72, height: 72, borderRadius: 36, borderWidth: 4, borderColor: '#ffffff', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', marginBottom: 24, backgroundColor: 'rgba(255,255,255,0.2)' },
   captureBtnDisabled: { opacity: 0.5 },
-  captureInner: { width: 56, height: 56, borderRadius: 28, backgroundColor: '#ffffff' },
-  previewSection: { borderRadius: 24, overflow: 'hidden', backgroundColor: '#ffffff', marginBottom: 20 },
+  captureInner: { width: 56, height: 56, borderRadius: 28, backgroundColor: 'transparent' },
+  previewSection: { borderRadius: 24, overflow: 'hidden', backgroundColor: 'transparent', marginBottom: 20 },
   preview: { width: '100%', height: 400 },
   timeBadge: { backgroundColor: '#0f172a', paddingVertical: 8, paddingHorizontal: 16, alignItems: 'center' },
   timeBadgeText: { color: '#ffffff', fontSize: 13, fontWeight: '600' },

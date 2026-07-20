@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface DashboardHeaderProps {
@@ -12,30 +13,37 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ title, subtitle, onMenuPress }: DashboardHeaderProps) {
   const isDark = useColorScheme() === 'dark';
-  const dynamicStyles = getStyles(isDark);
+  const text = isDark ? '#f1f5f9' : '#0f172a';
+  const subtext = isDark ? '#94a3b8' : '#475569';
+  const tint = isDark ? 'dark' : 'light';
+  const btnBg = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.5)';
+  const btnBorder = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.7)';
+  const badgeBg = isDark ? 'rgba(20,184,166,0.2)' : '#ccfbf1';
+  const badgeText = isDark ? '#5eead4' : '#0f766e';
+
   return (
-    <View style={dynamicStyles.container}>
+    <View style={styles.container}>
       <Pressable onPress={onMenuPress}>
-        <BlurView intensity={40} tint={isDark ? "dark" : "light"} style={dynamicStyles.menuButton}>
-          <Ionicons name="menu-outline" size={24} color={isDark ? "#f8fafc" : "#0f172a"} />
+        <BlurView intensity={50} tint={tint} style={[styles.menuButton, { backgroundColor: btnBg, borderColor: btnBorder }]}>
+          <Ionicons name="menu-outline" size={24} color={text} />
         </BlurView>
       </Pressable>
-      <View style={dynamicStyles.textContainer}>
-        <Text style={dynamicStyles.title}>{title}</Text>
-        <Text style={dynamicStyles.subtitle}>{subtitle}</Text>
+      <View style={styles.textContainer}>
+        <Text style={[styles.title, { color: text }]}>{title}</Text>
+        <Text style={[styles.subtitle, { color: subtext }]}>{subtitle}</Text>
       </View>
-      <BlurView intensity={40} tint={isDark ? "dark" : "light"} style={dynamicStyles.badge}>
-        <Text style={dynamicStyles.badgeText}>Live</Text>
-      </BlurView>
+      <View style={[styles.badge, { backgroundColor: badgeBg }]}>
+        <View style={styles.liveDot} />
+        <Text style={[styles.badgeText, { color: badgeText }]}>Live</Text>
+      </View>
     </View>
   );
 }
 
-const getStyles = (isDark: boolean) => StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingTop: 12,
     paddingBottom: 16,
@@ -46,9 +54,7 @@ const getStyles = (isDark: boolean) => StyleSheet.create({
     borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.6)',
     overflow: 'hidden',
   },
   textContainer: {
@@ -56,23 +62,28 @@ const getStyles = (isDark: boolean) => StyleSheet.create({
     marginLeft: 12,
   },
   title: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: '700',
-    color: isDark ? '#f8fafc' : '#0f172a',
   },
   subtitle: {
-    fontSize: 13,
-    color: isDark ? '#94a3b8' : '#64748b',
+    fontSize: 12,
     marginTop: 2,
   },
   badge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: isDark ? '#042f2e' : '#ecfeff',
+  },
+  liveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#10b981',
   },
   badgeText: {
-    color: isDark ? '#5eead4' : '#0f766e',
     fontSize: 12,
     fontWeight: '700',
   },

@@ -3,6 +3,7 @@ import * as Contacts from 'expo-contacts';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useSurvey } from '@/components/survey-context';
 
 export default function ContactsScreen() {
@@ -48,7 +49,7 @@ export default function ContactsScreen() {
 
   return (
     <View style={styles.container}>
-      <BlurView intensity={40} tint="light" style={styles.card}>
+      <BlurView intensity={40} tint="default" style={styles.card}>
         <Text style={styles.title}>Field Contacts</Text>
         <Text style={styles.subtitle}>
           {activeContact || 'No contact selected yet.'}
@@ -63,7 +64,7 @@ export default function ContactsScreen() {
         ) : (
           contacts.map((c) => (
             <Pressable key={c.id} onPress={() => selectContact(c)} style={{ marginBottom: 12 }}>
-              <BlurView intensity={30} tint="light" style={styles.contactItem}>
+              <BlurView intensity={30} tint="default" style={styles.contactItem}>
                 <Text style={styles.contactName}>{c.name || 'Unknown'}</Text>
                 <Text style={styles.contactDetail}>
                   {c.phoneNumbers?.[0]?.number || 'No phone'}
